@@ -40,7 +40,10 @@ private async Task<bool> SampleMethod(SampleLogClass log)
 
 ### Delete a log
 ```c#
+private async Task<bool> SampleMethod(SampleLogClass log)
+{
     // This method assumes you are working with a log that was declared elsewhere
     return await InternalLoggerService.DeleteLogAsync(log); // Will return a boolean
     . . .
+}
 ```
