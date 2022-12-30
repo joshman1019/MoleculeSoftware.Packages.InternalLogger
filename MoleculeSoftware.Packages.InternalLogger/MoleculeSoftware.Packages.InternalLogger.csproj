@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Title>Molecule Software - Internal Logger</Title>
+    <Version>0.0.1-Alpha1</Version>
+    <Authors>Joshua H. Santiago, Molecule Software</Authors>
+    <Company>Molecule Software Solutions</Company>
+    <Description>A simple error logger for keeping a text based log of all error messages and other system events. </Description>
+    <Copyright>2022 Molecule Software Solutions</Copyright>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>logger; web; desktop; text</PackageTags>
+    <PackageReleaseNotes>Alpha release - Note: This product is intended for internal use, and while available for anyone to use, may not function properly outside of Molecule Software Solutions environments. </PackageReleaseNotes>
+    <AssemblyVersion>0.0.1.0</AssemblyVersion>
+    <FileVersion>0.0.1.0</FileVersion>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
+  </ItemGroup>
+
+</Project>
