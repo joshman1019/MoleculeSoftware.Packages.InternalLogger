@@ -22,15 +22,37 @@ public static class InternalLoggerService
 		{
 			throw;
 		}
-    }    
-	
-	/// <summary>
-	/// Updates an existing log
-	/// </summary>
-	/// <param name="log"></param>
-	/// <returns></returns>
-	/// <exception cref="ArgumentException"></exception>
-	public static async Task<int> UpdateLogAsync(IInternalLog log)
+    }
+
+    /// <summary>
+    /// Saves a new log to the database 
+    /// </summary>
+    /// <param name="log"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
+    public static int SaveNewLog(IInternalLog log)
+    {
+        var convertedLog = InternalLog.ConvertInternalLog(log);
+
+        if (convertedLog is null)
+            throw new ArgumentException("The log was null");
+        try
+        {
+            return convertedLog.WriteLog();
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    /// <summary>
+    /// Updates an existing log
+    /// </summary>
+    /// <param name="log"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
+    public static async Task<int> UpdateLogAsync(IInternalLog log)
     {
 		var convertedLog = InternalLog.ConvertInternalLog(log);
         if (convertedLog is null)
@@ -43,15 +65,36 @@ public static class InternalLoggerService
 		{
 			throw;
 		}
-    }	
-	
-	/// <summary>
-	/// Deletes an existing log
-	/// </summary>
-	/// <param name="log"></param>
-	/// <returns></returns>
-	/// <exception cref="ArgumentException"></exception>
-	public static async Task<int> DeleteLogAsync(IInternalLog log)
+    }
+
+    /// <summary>
+    /// Updates an existing log
+    /// </summary>
+    /// <param name="log"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
+    public static int UpdateLog(IInternalLog log)
+    {
+        var convertedLog = InternalLog.ConvertInternalLog(log);
+        if (convertedLog is null)
+            throw new ArgumentException("The log was null");
+        try
+        {
+            return convertedLog.UpdateLog();
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    /// <summary>
+    /// Deletes an existing log
+    /// </summary>
+    /// <param name="log"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
+    public static async Task<int> DeleteLogAsync(IInternalLog log)
     {
 		var convertedLog = InternalLog.ConvertInternalLog(log);
         if (convertedLog is null)
@@ -66,12 +109,33 @@ public static class InternalLoggerService
 		}
     }
 
-	/// <summary>
-	/// Retrieves all logs from the system 
-	/// </summary>
-	/// <returns></returns>
-	/// <exception cref="Exception"></exception>
-	public static IEnumerable<IInternalLog>? RetrieveAllLogs()
+    /// <summary>
+    /// Deletes an existing log
+    /// </summary>
+    /// <param name="log"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
+    public static int DeleteLog(IInternalLog log)
+    {
+        var convertedLog = InternalLog.ConvertInternalLog(log);
+        if (convertedLog is null)
+            throw new ArgumentException("The log was null");
+        try
+        {
+            return convertedLog.DeleteLog(); 
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    /// <summary>
+    /// Retrieves all logs from the system 
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public static IEnumerable<IInternalLog>? RetrieveAllLogs()
 	{
 		using InternalLoggerController controller = new InternalLoggerController();
 		if (controller is null)
