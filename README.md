@@ -20,11 +20,27 @@ using MoleculeSoftware.Packages.InternalLogger;
 ```
 ### Create a log
 ```c#
-private void SampleMethod()
+private async Task<bool> SampleMethod()
 {
-	// Create log using an object that complies with interface IInternalLog
-	SampleLogClass log = new SampleLogClass("Test", "Test", LogTypes.Information, "Sample additional info"); 
-	var result = InternalLoggerService.SaveNewLogAsync(); // Will return a boolean
-	. . .
+    // Create log using an object that complies with interface IInternalLog
+    SampleLogClass log = new SampleLogClass("Test", "Test", LogTypes.Information, "Sample additional info"); 
+    return await InternalLoggerService.SaveNewLogAsync(log); // Will return a boolean
+    . . .
 }
+```
+### Update a log
+```c#
+private async Task<bool> SampleMethod(SampleLogClass log)
+{
+    // This method assumes you are working with a log that was declared elsewhere
+    return await InternalLoggerService.UpdateLogAsync(log); // Will return a boolean
+    . . .
+}
+```
+
+### Delete a log
+```c#
+    // This method assumes you are working with a log that was declared elsewhere
+    return await InternalLoggerService.DeleteLogAsync(log); // Will return a boolean
+    . . .
 ```
