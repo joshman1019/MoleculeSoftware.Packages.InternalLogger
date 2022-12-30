@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Title>Molecule Software - Internal Logger</Title>
-    <Version>0.0.1-Alpha1</Version>
+    <Version>0.0.2-Beta1</Version>
     <Authors>Joshua H. Santiago, Molecule Software</Authors>
     <Company>Molecule Software Solutions</Company>
     <Description>A simple error logger for keeping a text based log of all error messages and other system events. </Description>
@@ -13,8 +13,8 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>logger; web; desktop; text</PackageTags>
     <PackageReleaseNotes>Alpha release - Note: This product is intended for internal use, and while available for anyone to use, may not function properly outside of Molecule Software Solutions environments. </PackageReleaseNotes>
-    <AssemblyVersion>0.0.1.0</AssemblyVersion>
-    <FileVersion>0.0.1.0</FileVersion>
+    <AssemblyVersion>0.0.3.0</AssemblyVersion>
+    <FileVersion>0.0.3.0</FileVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/joshman1019/MoleculeSoftware.Packages.InternalLogger</RepositoryUrl>

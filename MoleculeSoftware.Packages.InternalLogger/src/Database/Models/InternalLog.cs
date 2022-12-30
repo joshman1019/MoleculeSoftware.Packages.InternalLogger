@@ -103,6 +103,33 @@ internal class InternalLog : IInternalLog
     }
 
     /// <summary>
+    /// Write a <see cref="InternalLog"/> to the database 
+    /// </summary>
+    /// <returns></returns>
+    internal int WriteLog()
+    {
+        InternalLoggerController controller = new InternalLoggerController();
+        var transaction =  controller.Database.BeginTransaction();
+        try
+        {
+            controller.Add(this);
+             controller.SaveChanges();
+            transaction.Commit();
+            return Id;
+        }
+        catch (Exception)
+        {
+             transaction.Rollback();
+            throw;
+        }
+        finally
+        {
+             controller.Dispose();
+             transaction.Dispose();
+        }
+    }
+
+    /// <summary>
     /// Update an <see cref="InternalLog"/> that is stored in the database 
     /// </summary>
     /// <returns></returns>
@@ -130,6 +157,33 @@ internal class InternalLog : IInternalLog
     }
 
     /// <summary>
+    /// Update an <see cref="InternalLog"/> that is stored in the database 
+    /// </summary>
+    /// <returns></returns>
+    internal int UpdateLog()
+    {
+        InternalLoggerController controller = new InternalLoggerController();
+        var transaction = controller.Database.BeginTransaction();
+        try
+        {
+            controller.Update(this);
+            controller.SaveChanges();
+            transaction.Commit();
+            return Id;
+        }
+        catch (Exception)
+        {
+            transaction.Rollback();
+            throw;
+        }
+        finally
+        {
+            controller.Dispose();
+            transaction.Dispose();
+        }
+    }
+
+    /// <summary>
     /// Delete an <see cref="InternalLog"/> from the database 
     /// </summary>
     /// <returns></returns>
@@ -153,6 +207,33 @@ internal class InternalLog : IInternalLog
         {
             await controller.DisposeAsync();
             await transaction.DisposeAsync();
+        }
+    }
+
+    /// <summary>
+    /// Delete an <see cref="InternalLog"/> from the database 
+    /// </summary>
+    /// <returns></returns>
+    internal int DeleteLog()
+    {
+        InternalLoggerController controller = new InternalLoggerController();
+        var transaction = controller.Database.BeginTransaction();
+        try
+        {
+            controller.Remove(this);
+            controller.SaveChanges();
+            transaction.Commit();
+            return Id;
+        }
+        catch (Exception)
+        {
+            transaction.Rollback();
+            throw;
+        }
+        finally
+        {
+            controller.Dispose();
+            transaction.Dispose();
         }
     }
 }
